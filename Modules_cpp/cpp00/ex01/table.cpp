@@ -34,3 +34,22 @@ void	print_contact(std::string buff, bool end){
 		print_separator();
 	}
 }
+
+void	print_sep_full_cont(int size, bool index)
+{
+	std::cout << std::endl;
+	std::cout << '+';
+	for (int i = 0; i < size; i++){
+		std::cout << '-';
+	}
+	std::cout << std::endl;
+	if (index == false)
+	std::cout << '|';
+}
+
+void	print_spaces(int i)
+{
+	while (i--)
+		std::cout << ' ';
+	std::cout << '|';
+}

@@ -15,7 +15,7 @@ void    Book::waiting_cmd(void){
 	std::string	buff;
 
 	while (true){
-		std::system ( "clear" );
+		std::cout << "\x1b[2J" << "\x1b[H"; // "clear" -> "retour en haut de page".
 		if (std::cin.eof())
 	 		return ;
 		std::cout << std::endl  << "Welcome to your directory 📖" << std::endl;
@@ -62,14 +62,14 @@ void	Book::table_waiting_cmd(Contact all[8], int nb_cont){
 		{
 			index = my_atoi(buff);
 			if (index - 1 >= 0 &&  index - 1 < nb_cont)
-				Contact::display_full_contact(all[index]);
+				display_full_contact(all, index - 1);
 		}
 	}
 }
 
 void Book::print_table(Contact all[8], int nb_cont)
 {
-	system("clear");
+	std::cout << "\x1b[2J" << "\x1b[H"; // "clear" -> "retour en haut de page".
 	if (nb_cont == 0)
 	{
 		std::cout << "❌ You don't have any contact \n";
@@ -86,5 +86,61 @@ void Book::print_table(Contact all[8], int nb_cont)
 		print_contact(all[i].getLastName(), false);
 		print_contact(all[i].getNickName(), true);
 	}
+}
+
+int		Book::bigger_line(Contact all[8], int index_cont)
+{
+	int	bigger_line;
+	int	len_tmp;
+	
+	bigger_line = my_strlen(all[index_cont].getFirstName());
+	len_tmp = my_strlen(all[index_cont].getLastName());
+	if (len_tmp > bigger_line)
+		bigger_line = len_tmp;
+	len_tmp = my_strlen(all[index_cont].getNickName());
+	if (len_tmp > bigger_line)
+		bigger_line = len_tmp;
+	len_tmp = my_strlen(all[index_cont].getNumber());
+	if (len_tmp > bigger_line)
+		bigger_line = len_tmp;
+	len_tmp = my_strlen(all[index_cont].getSecret());
+	if (len_tmp > bigger_line)
+		return (len_tmp);
+	return (bigger_line);
+}
+
+void    Book::display_full_contact(Contact all[8], int index_cont){
+	std::string	buff;
+	int			size = bigger_line(all, index_cont) + 18;
+
+	std::cout << "\x1b[2J" << "\x1b[H"; // "clear" -> "retour en haut de page".
+	print_sep_full_cont(size, 0);
+	std::cout << "Contact Number : " << index_cont;
+	print_spaces(size - 19);
+	print_sep_full_cont(size, 0);
+	std::cout << "First Name     : ";
+	std::cout << all[index_cont].getFirstName();
+	print_spaces(size - 18 - my_strlen(all[index_cont].getFirstName()));
+	print_sep_full_cont(size, 0);
+	std::cout << "Last Name      : ";
+	std::cout << all[index_cont].getLastName();
+	print_spaces(size - 18 - my_strlen(all[index_cont].getLastName()));
+	print_sep_full_cont(size, 0);
+	std::cout << "NickName       : ";
+	std::cout << all[index_cont].getNickName();
+	print_spaces(size - 18 - my_strlen(all[index_cont].getNickName()));
+	print_sep_full_cont(size, 0);
+	std::cout << "Phone Number   : ";
+	std::cout << all[index_cont].getNumber();
+	print_spaces(size - 18 - my_strlen(all[index_cont].getNumber()));
+	print_sep_full_cont(size, 0);
+	std::cout << "Secret         : ";
+	std::cout << all[index_cont].getSecret();
+	print_spaces(size - 18 - my_strlen(all[index_cont].getSecret()));
+	print_sep_full_cont(size, 1);
+	std::getline(std::cin, buff);
+	if (std::cin.eof())
+	 		return ;
+	waiting_cmd();
 }
 

@@ -96,6 +96,3 @@ void	Contact::fill_the_contact(std::string input, int index){
 		this->_secret = input;
 }
 
-void    Contact::display_full_contact(Contact cont){
-	std::cout << cont._fname;
-}

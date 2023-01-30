@@ -42,6 +42,5 @@ class   Contact
 		std::string		getNickName(void) const;
 		std::string		getNumber(void) const;
 		std::string		getSecret(void) const;
-		void			display_full_contact(Contact cont);
 };
 #endif
