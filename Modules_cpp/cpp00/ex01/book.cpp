@@ -24,7 +24,7 @@ void    Book::waiting_cmd(void){
 		std::getline(std::cin, buff);
 		if (buff == "ADD"){
 			this->_all[this->_index_cont] = this->add_contact();
-			if (this->_index_cont == SIZE)
+			if (this->_index_cont == SIZE - 1)
 				this->_index_cont = 0;
 			else
 				this->_index_cont++;
@@ -36,7 +36,7 @@ void    Book::waiting_cmd(void){
 		}
 		else if (buff == "EXIT")
 		{
-			system("clear");
+			std::cout << "\x1b[2J" << "\x1b[H";
 			break ;
 		}
 	}
@@ -58,14 +58,13 @@ void	Book::table_waiting_cmd(Contact all[8], int nb_cont){
 		std::getline(std::cin, buff);
 		if (std::cin.eof())
 	 		return ;
-		if (!my_strlen(buff))
-			waiting_cmd();
 		if (my_isdigit(buff) == true)
 		{
 			index = my_atoi(buff);
 			if (index - 1 >= 0 &&  index - 1 < nb_cont)
 				display_full_contact(all, index - 1, nb_cont);
 		}
+		waiting_cmd();
 	}
 }
 
