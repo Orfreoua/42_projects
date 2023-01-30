@@ -26,6 +26,8 @@ void    Book::waiting_cmd(void){
 			this->_all[this->_index_cont] = this->add_contact();
 			if (this->_index_cont == SIZE)
 				this->_index_cont = 0;
+			else
+				this->_index_cont++;
 			if (this->_nb_cont < SIZE)
 			this->_nb_cont++;
 		}
@@ -62,7 +64,7 @@ void	Book::table_waiting_cmd(Contact all[8], int nb_cont){
 		{
 			index = my_atoi(buff);
 			if (index - 1 >= 0 &&  index - 1 < nb_cont)
-				display_full_contact(all, index - 1);
+				display_full_contact(all, index - 1, nb_cont);
 		}
 	}
 }
@@ -109,13 +111,14 @@ int		Book::bigger_line(Contact all[8], int index_cont)
 	return (bigger_line);
 }
 
-void    Book::display_full_contact(Contact all[8], int index_cont){
+void    Book::display_full_contact(Contact all[8], int index_cont, int nb_cont){
 	std::string	buff;
 	int			size = bigger_line(all, index_cont) + 18;
+	int			index;
 
 	std::cout << "\x1b[2J" << "\x1b[H"; // "clear" -> "retour en haut de page".
 	print_sep_full_cont(size, 0);
-	std::cout << "Contact Number : " << index_cont;
+	std::cout << "Contact Number : " << index_cont + 1;
 	print_spaces(size - 19);
 	print_sep_full_cont(size, 0);
 	std::cout << "First Name     : ";
@@ -141,6 +144,9 @@ void    Book::display_full_contact(Contact all[8], int index_cont){
 	std::getline(std::cin, buff);
 	if (std::cin.eof())
 	 		return ;
+	index = my_atoi(buff);
+	if (index - 1 >= 0 &&  index - 1 < nb_cont)
+		display_full_contact(all, index - 1, nb_cont);
 	waiting_cmd();
 }
 
