@@ -1,4 +1,4 @@
-#include "phonebook.hpp"
+#include "utils.hpp"
 
 int		my_strlen(std::string s)
 {
@@ -7,6 +7,21 @@ int		my_strlen(std::string s)
 	while (s[i])
 		i++;
 	return (i);
+}
+
+int	my_atoi(std::string str)
+{
+	int result;
+	int i;
+
+	result = 0;
+	i = 0;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		result = result * 10 + (str[i] - '0');
+		i++;
+	}
+	return (result);
 }
 
 bool	is_just_blank(std::string s)

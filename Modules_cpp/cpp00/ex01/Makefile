@@ -1,2 +1,2 @@
 run :
-	c++ *.cpp -o phonebook && ./phonebook
+	c++ *.cpp -o exec && ./exec
