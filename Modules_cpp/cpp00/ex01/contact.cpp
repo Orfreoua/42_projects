@@ -52,9 +52,10 @@ void Contact::create_contact(void){
 			sleep(1);
 		}
 	}
-	if (i == 5)
+	if (i == 5){
 		std::cout << "✅ Contact is registered !" << std::endl;
 		sleep(1);
+	}
 }
 
 void    Contact::good_request(int index){
