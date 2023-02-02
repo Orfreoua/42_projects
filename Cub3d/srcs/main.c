@@ -6,7 +6,7 @@
 /*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:57:30 by orfreoua          #+#    #+#             */
-/*   Updated: 2023/02/02 14:59:37 by orfreoua         ###   ########.fr       */
+/*   Updated: 2023/02/02 15:05:04 by orfreoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 int	main(int argc, char **argv)
 {
-	(void)argv;
 	if (argc < 2 || argc > 3)
 		return (print_error(BAD_NB_ARG));
+	if (load_file(argv[1]) == ERROR)
+		return (ERROR);
 	return (0);
 }

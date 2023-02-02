@@ -6,7 +6,7 @@
 #    By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/02 14:57:57 by orfreoua          #+#    #+#              #
-#    Updated: 2023/02/02 15:01:34 by orfreoua         ###   ########.fr        #
+#    Updated: 2023/02/02 15:10:43 by orfreoua         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME			= cub3D
 
 SRCS			=	srcs/main.c\
 					srcs/utils.c\
+					srcs/load_file.c\
 					srcs/libft/ft_putstr_fd.c\
 					srcs/libft/ft_strlen.c\
 
