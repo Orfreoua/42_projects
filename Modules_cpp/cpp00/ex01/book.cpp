@@ -81,8 +81,8 @@ void Book::print_table(Contact all[8], int nb_cont)
 	print_header();
 	for (int i = 0; (i < nb_cont); i++){
 		std::cout << "|";
-		std::cout << (i + 1);
-		std::cout << "         |";
+		std::cout << "         ";
+		std::cout << (i + 1) << '|';
 		print_contact(all[i].getFirstName(), false);
 		print_contact(all[i].getLastName(), false);
 		print_contact(all[i].getNickName(), true);
@@ -112,8 +112,8 @@ int		Book::bigger_line(Contact all[8], int index_cont)
 
 void    Book::display_full_contact(Contact all[8], int index_cont, int nb_cont){
 	std::string	buff;
-	int			size = bigger_line(all, index_cont) + 18;
 	int			index;
+	int			size = bigger_line(all, index_cont) + 18;
 
 	std::cout << "\x1b[2J" << "\x1b[H"; // "clear" -> "retour en haut de page".
 	print_sep_full_cont(size, 0);
