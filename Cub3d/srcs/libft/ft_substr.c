@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/02 14:57:30 by orfreoua          #+#    #+#             */
-/*   Updated: 2023/02/02 16:14:33 by orfreoua         ###   ########.fr       */
+/*   Created: 2023/02/02 16:57:48 by orfreoua          #+#    #+#             */
+/*   Updated: 2023/02/02 17:06:43 by orfreoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/cub3d.h"
+#include "../../headers/libft.h"
 
-int	main(int argc, char **argv)
+char	*ft_substr(char *s, int x, int y)
 {
-	t_data	*data;
+	char	*new_s;
+	int		size;
+	int		i;
 
-	if (argc < 2 || argc > 3)
-		return (print_error(BAD_NB_ARG));
-	if (load_file(&data, argv[1]) == ERROR)
-		return (ERROR);
-	return (0);
+	size = y - x;
+	if (size < 0 || (ft_strlen(s) < y))
+		return (0);
+	new_s = malloc(sizeof(char *) * (size + 1));
+	if (!new_s)
+		return (0);
+	i = 0;
+	while ((x + i) < y)
+	{
+		new_s[i] = s[x + i];
+		i++;
+	}
+	new_s[x + i] = 0;
 }

@@ -6,7 +6,7 @@
 #    By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/02 14:57:57 by orfreoua          #+#    #+#              #
-#    Updated: 2023/02/02 15:10:43 by orfreoua         ###   ########.fr        #
+#    Updated: 2023/02/02 17:27:44 by orfreoua         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,8 @@ SRCS			=	srcs/main.c\
 					srcs/load_file.c\
 					srcs/libft/ft_putstr_fd.c\
 					srcs/libft/ft_strlen.c\
+					srcs/libft/ft_substr.c\
+					srcs/libft/ft_strjoin.c\
 
 DIR_MLX			=	./mlx_linux/
 
