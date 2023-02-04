@@ -6,16 +6,25 @@
 /*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:57:30 by orfreoua          #+#    #+#             */
-/*   Updated: 2023/02/04 18:23:32 by orfreoua         ###   ########.fr       */
+/*   Updated: 2023/02/04 19:55:59 by orfreoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/cub3d.h"
 
+int	end(t_data *data)
+{
+	mlx_destroy_window(data->mlx.ptr_mlx, data->mlx.ptr_win);
+	exit(0);
+	//free_map
+	return (0);
+}
+
 int	key_hook(int key, t_data *data)
 {
 	(void)data;
-	ft_putnbr_fd(STDERR_FILENO, key);
+	if (key == ESCAPE)
+		end(data);
 	return (OK);
 }
 
@@ -30,15 +39,11 @@ int	main(int argc, char **argv)
 		return (print_error(MLX_CONNECTION));
 	if (load_file(&data, argv[1]) == ERROR)
 		return (ERROR);
-	data.mlx.ptr_win = mlx_new_window(data.mlx.ptr_mlx, data.file.size_map.x, data.file.size_map.y, "");
+	data.mlx.ptr_win = mlx_new_window(data.mlx.ptr_mlx, data.file.size_map.x * 64, data.file.size_map.y * 64, "");
 	if (!data.mlx.ptr_win)
 		return (print_error(WIN_CONNECTION));
 	mlx_hook(data.mlx.ptr_win, 2, 1L << 0, key_hook, &data);
-	/*mlx_loop_hook(data->mlx.init, update, data);
-	mlx_hook(data->mlx.win, 2, 1L << 0, key_hook, data);
-	mlx_hook(data->mlx.win, 33, 1L << 5, free_all, data);
-	mlx_loop(data->mlx.init);*/
+	mlx_hook(data.mlx.ptr_win, 33, 1L << 5, end, &data);
 	mlx_loop(data.mlx.ptr_mlx);
-	mlx_destroy_window(data.mlx.ptr_mlx, data.mlx.ptr_win);
 	return (0);
 }

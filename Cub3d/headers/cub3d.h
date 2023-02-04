@@ -6,7 +6,7 @@
 /*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:58:03 by orfreoua          #+#    #+#             */
-/*   Updated: 2023/02/04 18:05:46 by orfreoua         ###   ########.fr       */
+/*   Updated: 2023/02/04 19:54:35 by orfreoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,25 @@
 # define OK 0
 
 /*  error messages   */
-# define BAD_NB_ARG		"bad nb of arguments"
-# define EMPTY_ARG_FILE	"you have to give an argument"
-# define SECRET_FILE	"this is a secret file"
-# define BAD_NAME_FILE	"this is a bad name of file"
-# define BAD_PATH_FILE	"the path is not valid"
-# define MLX_CONNECTION	"the connection between with the display has not been established"
-# define WIN_CONNECTION	"the window could not be created"
+# define	BAD_NB_ARG		"bad nb of arguments"
+# define	EMPTY_ARG_FILE	"you have to give an argument"
+# define	SECRET_FILE		"this is a secret file"
+# define	BAD_NAME_FILE	"this is a bad name of file"
+# define	BAD_PATH_FILE	"the path is not valid"
+# define	MLX_CONNECTION	"the connection between with the display has not been established"
+# define	WIN_CONNECTION	"the window could not be created"
 
 
 /*  colors  */
-# define RED  "\x1B[31m"
-# define NRM  "\x1B[0m"
+# define	RED  			"\x1B[31m"
+# define	NRM  			"\x1B[0m"
+
+/*	key	*/
+# define	UP				119
+# define	DOWN			115
+# define	LEFT			797
+# define	RIGHT			100
+# define	ESCAPE			65307
 
 typedef struct s_assets
 {
