@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/02 16:57:48 by orfreoua          #+#    #+#             */
-/*   Updated: 2023/02/04 17:06:50 by orfreoua         ###   ########.fr       */
+/*   Created: 2023/02/04 17:13:09 by orfreoua          #+#    #+#             */
+/*   Updated: 2023/02/04 17:13:23 by orfreoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/libft.h"
 
-char	*ft_substr(char *s, int x, int y)
+char	*ft_strdup(const char *s)
 {
-	char	*new_s;
-	int		size;
+	char	*dest;
+	int		len;
 	int		i;
 
-	size = y - x;
-	if (size < 0 || (ft_strlen(s) < y))
-		return (0);
-	new_s = malloc(sizeof(char *) * (size + 1));
-	if (!new_s)
+	len = 0;
+	while (s[len])
+		len++;
+	if (!(dest = malloc(sizeof(char) * (len + 1))))
 		return (0);
 	i = 0;
-	while ((x + i) < y)
+	while (i < len)
 	{
-		new_s[i] = s[x + i];
+		dest[i] = s[i];
 		i++;
 	}
-	new_s[x + i] = 0;
-	return (new_s);
+	dest[i] = '\0';
+	return (dest);
 }

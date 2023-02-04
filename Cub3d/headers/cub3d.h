@@ -6,7 +6,7 @@
 /*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:58:03 by orfreoua          #+#    #+#             */
-/*   Updated: 2023/02/02 17:27:30 by orfreoua         ###   ########.fr       */
+/*   Updated: 2023/02/04 17:33:02 by orfreoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,45 @@
 # define RED  "\x1B[31m"
 # define NRM  "\x1B[0m"
 
-typedef struct s_file
+typedef struct s_assets
 {
 	char *path_north;
 	char *path_south;
 	char *path_east;
 	char *path_ouest;
+}	t_assets;
+
+typedef struct s_point
+{
+	double		x;
+	double		y;
+	
+}	t_point;
+
+typedef struct s_size
+{
+	int			x;
+	int			y;
+	
+}	t_size;
+
+typedef struct s_file
+{
+	char		**map;
+	t_size		size_map;
+	t_point		pos_player;
+	
 }	t_file;
+
+typedef struct s_mlx
+{
+
+	
+}	t_mlx;
 
 typedef struct s_data
 {
-	
+	t_file	file;
 }	t_data;
 
 /*  utils.c */
