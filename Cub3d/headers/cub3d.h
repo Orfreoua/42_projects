@@ -6,7 +6,7 @@
 /*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:58:03 by orfreoua          #+#    #+#             */
-/*   Updated: 2023/02/04 17:33:02 by orfreoua         ###   ########.fr       */
+/*   Updated: 2023/02/04 18:05:46 by orfreoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@
 # define SECRET_FILE	"this is a secret file"
 # define BAD_NAME_FILE	"this is a bad name of file"
 # define BAD_PATH_FILE	"the path is not valid"
+# define MLX_CONNECTION	"the connection between with the display has not been established"
+# define WIN_CONNECTION	"the window could not be created"
 
 
 /*  colors  */
@@ -68,13 +70,14 @@ typedef struct s_file
 
 typedef struct s_mlx
 {
-
-	
+	void	*ptr_mlx;
+	void	*ptr_win;
 }	t_mlx;
 
 typedef struct s_data
 {
 	t_file	file;
+	t_mlx	mlx;
 }	t_data;
 
 /*  utils.c */

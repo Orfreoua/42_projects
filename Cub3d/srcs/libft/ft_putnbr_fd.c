@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/02 14:57:51 by orfreoua          #+#    #+#             */
-/*   Updated: 2023/02/04 18:24:55 by orfreoua         ###   ########.fr       */
+/*   Created: 2023/02/04 18:22:05 by orfreoua          #+#    #+#             */
+/*   Updated: 2023/02/04 18:22:17 by orfreoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "../../headers/libft.h"
 
-# include "cub3d.h"
-
-# define BUFFER_SIZE 42
-
-void	ft_putstr_fd(int fd, char *s);
-int		ft_strlen(char *str);
-char	*ft_substr(char *s, int x, int y);
-char	*ft_strjoin(char const *s1, char const *s2, int index_free);
-char	*ft_strdup(const char *s);
-void	ft_putnbr_fd(int n, int fd);
-void	ft_putchar_fd(char c, int fd);
-
-#endif
+void	ft_putnbr_fd(int n, int fd)
+{
+	if (n == -2147483648)
+		write(fd, "-2147483648", 11);
+	else if (n == 0)
+		ft_putchar_fd('0', fd);
+	else if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		n = n * -1;
+		ft_putnbr_fd(n, fd);
+	}
+	else if (n >= 10)
+	{
+		ft_putnbr_fd((n / 10), fd);
+		ft_putchar_fd((n % 10 + '0'), fd);
+	}
+	else
+		ft_putchar_fd((n + '0'), fd);
+}
