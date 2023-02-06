@@ -6,7 +6,7 @@
 /*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 17:47:03 by orfreoua          #+#    #+#             */
-/*   Updated: 2023/02/06 19:31:48 by orfreoua         ###   ########.fr       */
+/*   Updated: 2023/02/06 19:40:37 by orfreoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,5 @@ int	get_next_line(int fd, char **line)
 		*line = ft_strjoin(*line, buff, 1);
 		ret = read(fd, buff, 1);
 	}
-	if (ret < 1)
-		return (0);
-	return (1);
+	return (ret);
 }

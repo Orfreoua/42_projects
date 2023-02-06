@@ -6,7 +6,7 @@
 /*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:58:03 by orfreoua          #+#    #+#             */
-/*   Updated: 2023/02/06 17:27:27 by orfreoua         ###   ########.fr       */
+/*   Updated: 2023/02/06 19:57:54 by orfreoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,20 @@
 # define RESO_X 1000
 # define RESO_Y 1000
 
-typedef struct s_assets
+typedef struct s_textures
 {
 	char		*path_north;
 	char		*path_south;
 	char		*path_east;
 	char		*path_ouest;
-}	t_assets;
+}	t_textures;
 
 typedef struct s_file
 {
 	char		**map;
-	t_size		size_map;
+	t_size		size;
 	t_point		pos_player;	
+	t_textures	textures;	
 }	t_file;
 
 typedef struct s_mlx
