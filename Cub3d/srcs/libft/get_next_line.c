@@ -1,67 +1,32 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/06 17:47:03 by orfreoua          #+#    #+#             */
+/*   Updated: 2023/02/06 19:31:48 by orfreoua         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../headers/libft.h"
 
-int		find_index(char *s, char c)
+int	get_next_line(int fd, char **line)
 {
-	int	i;
+	int		ret;
+	char	buff[2];
 
-	i = 0;
-	if (!s)
-		return (-1);
-	while (s[i++])
+	*line = malloc(sizeof(char));
+	*line[0] = 0;
+	ret = read(fd, buff, 1);
+	while (ret > 0 && buff[0] != '\n')
 	{
-		if (s[i] == c)
-			return (i);
+		buff[1] = 0;
+		*line = ft_strjoin(*line, buff, 1);
+		ret = read(fd, buff, 1);
 	}
-	return (-1);
-}
-
-char	*get_next_line(int fd)
-{
-	static char	*rest = NULL;
-	char		*line;
-	char		*temp;
-	char		buff[BUFFER_SIZE + 1];
-	int			ret;
-
-	if (fd == -1)
-		return (NULL);
-	if (find_index(rest, '\n') != -1)
-	{
-		temp = ft_substr(rest, find_index(rest, '\n'), ft_strlen(rest));
-		line = ft_substr(rest, 0, find_index(rest, '\n'));
-		free(rest);
-		rest = temp;
-		return (line);
-	}
-	else
-	{
-		ret = read(fd, buff, BUFFER_SIZE);
-		while (ret > 0)
-		{
-			buff[ret] = '\0';
-			rest = ft_strjoin(rest, buff, 1);
-			if (find_index(rest, '\n') != -1)
-				get_next_line(fd);
-		}
-	}
-	if (ft_strlen(rest))
-	{
-		line = ft_substr(rest, 0, ft_strlen(rest));
-		free(rest);
-		rest = NULL;
-	}
-	return (line);
-}
-
-
-#include  <stdio.h>
-int main()
-{
-	int fd = open("ft_substr.c", O_RDONLY);
-	char *line;
-	while (line = get_next_line(fd))
-	{
-		printf("%s\n", line);
-		free(line);
-	}
+	if (ret < 1)
+		return (0);
+	return (1);
 }
