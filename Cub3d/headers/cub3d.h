@@ -6,7 +6,7 @@
 /*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:58:03 by orfreoua          #+#    #+#             */
-/*   Updated: 2023/02/04 20:26:40 by orfreoua         ###   ########.fr       */
+/*   Updated: 2023/02/06 17:27:27 by orfreoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 
 # define ERROR 1
 # define OK 0
+
+# define RESO_X 1000
+# define RESO_Y 1000
 
 typedef struct s_assets
 {

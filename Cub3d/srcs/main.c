@@ -6,7 +6,7 @@
 /*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:57:30 by orfreoua          #+#    #+#             */
-/*   Updated: 2023/02/04 19:55:59 by orfreoua         ###   ########.fr       */
+/*   Updated: 2023/02/06 18:17:12 by orfreoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	main(int argc, char **argv)
 		return (print_error(MLX_CONNECTION));
 	if (load_file(&data, argv[1]) == ERROR)
 		return (ERROR);
-	data.mlx.ptr_win = mlx_new_window(data.mlx.ptr_mlx, data.file.size_map.x * 64, data.file.size_map.y * 64, "");
+	data.mlx.ptr_win = mlx_new_window(data.mlx.ptr_mlx, RESO_X, RESO_Y, "");
 	if (!data.mlx.ptr_win)
 		return (print_error(WIN_CONNECTION));
 	mlx_hook(data.mlx.ptr_win, 2, 1L << 0, key_hook, &data);
