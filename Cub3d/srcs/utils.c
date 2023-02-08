@@ -6,7 +6,7 @@
 /*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:57:44 by orfreoua          #+#    #+#             */
-/*   Updated: 2023/02/08 19:35:02 by orfreoua         ###   ########.fr       */
+/*   Updated: 2023/02/08 19:51:52 by orfreoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ int	print_error(char *msg)
 void	free_error(t_data *data, char *msg)
 {
 	//if (data->file.map) la faut free un tableau de tableaus
-	if (data->file.textures[PATH_NORTH])
-		free(data->file.textures[PATH_NORTH]);
-	if (data->file.textures[PATH_SOUTH])
-		free(data->file.textures[PATH_SOUTH]);
-	if (data->file.textures[PATH_EAST])
-		free(data->file.textures[PATH_EAST]);
-	if (data->file.textures[PATH_OUEST])
-		free(data->file.textures[PATH_OUEST]);
+	if (data->file.textures.north)
+		free(data->file.textures.north);
+	if (data->file.textures.south)
+		free(data->file.textures.south);
+	if (data->file.textures.east)
+		free(data->file.textures.east);
+	if (data->file.textures.west)
+		free(data->file.textures.west);
 	print_error(msg);
 	exit(1);
 }

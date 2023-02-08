@@ -6,7 +6,7 @@
 /*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:58:03 by orfreoua          #+#    #+#             */
-/*   Updated: 2023/02/08 19:26:35 by orfreoua         ###   ########.fr       */
+/*   Updated: 2023/02/08 20:01:28 by orfreoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@
 # define RESO_X 1000
 # define RESO_Y 1000
 
-typedef enum s_textures
+typedef struct s_textures
 {
-	PATH_NORTH,
-	PATH_SOUTH,
-	PATH_EAST,
-	PATH_OUEST
+	char	*north;
+	char	*south;
+	char	*east;
+	char	*west;
 }	t_textures;
 
 typedef struct s_file
@@ -34,7 +34,7 @@ typedef struct s_file
 	char		**map;
 	t_size		size;
 	t_point		pos_player;	
-	char		*textures[4];
+	t_textures	textures;
 	t_color		ceiling;
 	t_color		floor;
 }	t_file;

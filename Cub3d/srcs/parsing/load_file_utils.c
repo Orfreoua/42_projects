@@ -6,7 +6,7 @@
 /*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 18:13:16 by orfreoua          #+#    #+#             */
-/*   Updated: 2023/02/08 19:04:34 by orfreoua         ###   ########.fr       */
+/*   Updated: 2023/02/08 19:50:44 by orfreoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ void	init_file(t_file *file)
 	file->floor.r = -1;
 	file->floor.g = -1;
 	file->floor.b = -1;
-	file->textures[PATH_NORTH] = 0;
-	file->textures[PATH_SOUTH] = 0;
-	file->textures[PATH_EAST] = 0;
-	file->textures[PATH_OUEST] = 0;
+	file->textures.north = 0;
+	file->textures.south = 0;
+	file->textures.east = 0;
+	file->textures.west = 0;
 	file->map = NULL;
 	file->pos_player.x = -1;
 	file->pos_player.y = -1;
@@ -39,8 +39,8 @@ int	valid_color(t_color *color)
 
 int	all_data_is_recovered(t_data *data)
 {
-	if (data->file.textures[PATH_OUEST] && data->file.textures[PATH_NORTH]
-		&& data->file.textures[PATH_SOUTH] && data->file.textures[PATH_EAST]
+	if (data->file.textures.north && data->file.textures.south
+		&& data->file.textures.east && data->file.textures.west
 		&& valid_color(&data->file.ceiling) && valid_color(&data->file.floor))
 		return (1);
 	return (0);
