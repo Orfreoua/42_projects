@@ -6,11 +6,11 @@
 /*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 15:05:36 by orfreoua          #+#    #+#             */
-/*   Updated: 2023/02/06 20:00:36 by orfreoua         ###   ########.fr       */
+/*   Updated: 2023/02/08 19:05:24 by orfreoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/cub3d.h"
+#include "../../headers/cub3d.h"
 
 int	check_file(char *file)
 {
@@ -34,24 +34,45 @@ int	check_file(char *file)
 
 int	check_inside_file(t_data *data, int fd)
 {
-	char *line;
+	//char	*line;
+	int		nb;
 
-	while (get_next_line(fd, &line) > 0)
+	nb = 0;
+	if (fd == -1)
+		return (print_error(BAD_PATH_FILE));
+	if (!data->file.textures[PATH_EAST])
 	{
-		if (strncmp(line, "NO ./", 5)){}
-		else if (strncmp(line, "SO ./", 5)){}
-		else if (strncmp(line, "WE ./", 5)){}
-		else if (strncmp(line, "EA ./", 5)){}
-		else if (!data->file.textures.path_east || !data->file.textures.path_north
-		|| !data->file.textures.path_ouest || !data->file.textures.path_south)
-			return (print_error(MISSING_TEXTURES));
+		printf("test\n");
+		return (ERROR);// that work.
 	}
+	/*while (get_next_line(fd, &line) > 0)
+	{
+		return (ERROR);
+		if (!ft_strncmp(line, "NO ./", 5))
+		{
+			if (load_path(data, line, PATH_NORTH))
+				//return (free_error());
+		}
+		else if (ft_strncmp(line, "SO ./", 5)){}
+		else if (ft_strncmp(line, "WE ./", 5)){}
+		else if (ft_strncmp(line, "EA ./", 5)){}
+		else if (ft_strncmp(line, "F ", 2)){}
+		//else if (ft_strncmp(line, "C ", 2)){}
+		else
+			break;
+		nb++;
+		if (all_data_is_recovered(data))
+			break ;
+	}
+	//		return (print_error(MISSING_TEXTURES));*/
+	return (OK);
 }	
 
 int	load_file(t_data *data, char *file)
 {
 	if (check_file(file) == ERROR)
 		return (ERROR);
+	init_file(&data->file);
 	if (check_inside_file(data, open(file, O_RDONLY)) == ERROR)
 		return (ERROR);
 	return (OK);

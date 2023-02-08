@@ -6,7 +6,7 @@
 #    By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/02 14:57:57 by orfreoua          #+#    #+#              #
-#    Updated: 2023/02/06 19:35:47 by orfreoua         ###   ########.fr        #
+#    Updated: 2023/02/08 18:19:22 by orfreoua         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,6 @@ NAME			= cub3D
 
 SRCS			=	srcs/main.c\
 					srcs/utils.c\
-					srcs/load_file.c\
 					srcs/libft/ft_putstr_fd.c\
 					srcs/libft/ft_strlen.c\
 					srcs/libft/ft_substr.c\
@@ -23,6 +22,9 @@ SRCS			=	srcs/main.c\
 					srcs/libft/ft_putnbr_fd.c\
 					srcs/libft/ft_putchar_fd.c\
 					srcs/libft/get_next_line.c\
+					srcs/libft/ft_strncmp.c\
+					srcs/parsing/load_file.c\
+					srcs/parsing/load_file_utils.c\
 					
 
 DIR_MLX			=	./mlx_linux/

@@ -6,7 +6,7 @@
 /*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 20:27:46 by orfreoua          #+#    #+#             */
-/*   Updated: 2023/02/06 17:53:32 by orfreoua         ###   ########.fr       */
+/*   Updated: 2023/02/08 18:25:05 by orfreoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@
 # include "key.h"
 # include "error_msg.h"
 # include "math.h"
-#include  <stdio.h>
+# include  <stdio.h>
 
 #endif
