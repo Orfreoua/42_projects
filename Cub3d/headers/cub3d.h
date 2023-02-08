@@ -6,7 +6,7 @@
 /*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:58:03 by orfreoua          #+#    #+#             */
-/*   Updated: 2023/02/08 18:59:28 by orfreoua         ###   ########.fr       */
+/*   Updated: 2023/02/08 19:26:35 by orfreoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct s_file
 	char		**map;
 	t_size		size;
 	t_point		pos_player;	
-	char		textures[4];
+	char		*textures[4];
 	t_color		ceiling;
 	t_color		floor;
 }	t_file;
@@ -52,7 +52,8 @@ typedef struct s_data
 }	t_data;
 
 /*  utils.c */
-int	print_error(char *msg);
+int		print_error(char *msg);
+void	free_error(t_data *data, char *msg);
 
 /*	parsing	*/
 int		load_file(t_data *data, char *file);

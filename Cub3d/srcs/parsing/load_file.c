@@ -6,7 +6,7 @@
 /*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 15:05:36 by orfreoua          #+#    #+#             */
-/*   Updated: 2023/02/08 19:05:24 by orfreoua         ###   ########.fr       */
+/*   Updated: 2023/02/08 19:36:43 by orfreoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,38 +32,59 @@ int	check_file(char *file)
 	return (OK);
 }
 
+void	load_path(t_data *data, char *line, int index, int fd)
+{
+	if (data->file.textures[index])
+	{
+		free(line);
+		close(fd);
+		free_error(data, DOUBLE_SAME_PATH);
+	}
+	data->file.textures[index] = ft_strdup(line);
+	if (!data->file.textures[index])
+	{
+		free(line);
+		close(fd);
+		free_error(data, MALLOC_FAILED);
+	}
+}
+
 int	check_inside_file(t_data *data, int fd)
 {
-	//char	*line;
+	char	*line;
 	int		nb;
 
 	nb = 0;
 	if (fd == -1)
 		return (print_error(BAD_PATH_FILE));
-	if (!data->file.textures[PATH_EAST])
+	while (get_next_line(fd, &line) > 0)
 	{
 		printf("test\n");
-		return (ERROR);// that work.
-	}
-	/*while (get_next_line(fd, &line) > 0)
-	{
-		return (ERROR);
 		if (!ft_strncmp(line, "NO ./", 5))
-		{
-			if (load_path(data, line, PATH_NORTH))
-				//return (free_error());
-		}
-		else if (ft_strncmp(line, "SO ./", 5)){}
-		else if (ft_strncmp(line, "WE ./", 5)){}
-		else if (ft_strncmp(line, "EA ./", 5)){}
-		else if (ft_strncmp(line, "F ", 2)){}
-		//else if (ft_strncmp(line, "C ", 2)){}
+			load_path(data, line, PATH_NORTH, fd);
+		else if (ft_strncmp(line, "SO ./", 5))
+			load_path(data, line, PATH_SOUTH, fd);
+		else if (ft_strncmp(line, "WE ./", 5))
+			load_path(data, line, PATH_OUEST, fd);
+		else if (ft_strncmp(line, "EA ./", 5))
+			load_path(data, line, PATH_EAST, fd);
+	/*	else if (ft_strncmp(line, "F ", 2)){}
+		//else if (ft_strncmp(line, "C ", 2)){}*/
 		else
 			break;
 		nb++;
 		if (all_data_is_recovered(data))
 			break ;
 	}
+	// je dois faire une fonction la
+	if (!ft_strncmp(line, "NO ./", 5))
+			load_path(data, line, PATH_NORTH, fd);
+	else if (ft_strncmp(line, "SO ./", 5))
+		load_path(data, line, PATH_SOUTH, fd);
+	else if (ft_strncmp(line, "WE ./", 5))
+		load_path(data, line, PATH_OUEST, fd);
+	else if (ft_strncmp(line, "EA ./", 5))
+		load_path(data, line, PATH_EAST, fd);
 	//		return (print_error(MISSING_TEXTURES));*/
 	return (OK);
 }	

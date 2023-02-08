@@ -6,7 +6,7 @@
 /*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 20:18:56 by orfreoua          #+#    #+#             */
-/*   Updated: 2023/02/06 20:03:41 by orfreoua         ###   ########.fr       */
+/*   Updated: 2023/02/08 19:22:02 by orfreoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,7 @@
 # define MLX_CONNECTION "the connection between with the display has not been established"
 # define WIN_CONNECTION "the window could not be created"
 # define MISSING_TEXTURES "one or more textures are missing from the file.cub"
+# define DOUBLE_SAME_PATH "tu as mis deux fois le meme path spice di connasse"
+# define MALLOC_FAILED "un malloc n'a pas ete initialisé"
 
 #endif
