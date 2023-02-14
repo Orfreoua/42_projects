@@ -6,7 +6,7 @@
 /*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:58:03 by orfreoua          #+#    #+#             */
-/*   Updated: 2023/02/08 20:01:28 by orfreoua         ###   ########.fr       */
+/*   Updated: 2023/02/14 20:25:58 by orfreoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,22 +32,33 @@ typedef struct s_textures
 typedef struct s_file
 {
 	char		**map;
-	t_size		size;
+	t_size		grid;
 	t_point		pos_player;	
 	t_textures	textures;
 	t_color		ceiling;
 	t_color		floor;
 }	t_file;
 
-typedef struct s_mlx
+typedef struct	s_screen
 {
-	void		*ptr_mlx;
+	void	*ptr;
+	char	*addr;
+	int		bpp;
+	int		line_length;
+	int		endian;
+}				t_screen;
+
+typedef struct	s_mlx
+{
+	void		*ptr;
 	void		*ptr_win;
-}	t_mlx;
+	t_screen	screen;
+}				t_mlx;
 
 typedef struct s_data
 {
 	t_file		file;
+	t_minimap	minimap;
 	t_mlx		mlx;
 }	t_data;
 
@@ -59,5 +70,9 @@ void	free_error(t_data *data, char *msg);
 int		load_file(t_data *data, char *file);
 int		all_data_is_recovered(t_data *data);
 void	init_file(t_file *file);
+void	draw_point(t_data *data, int x, int y , int color);
+
+void	display_minimap(t_data *data);
+void	mini_map_init(t_data *data, t_minimap *minimap);
 
 #endif

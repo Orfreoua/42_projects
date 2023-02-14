@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   headers.h                                          :+:      :+:    :+:   */
+/*   minimap.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/04 20:27:46 by orfreoua          #+#    #+#             */
-/*   Updated: 2023/02/14 18:49:52 by orfreoua         ###   ########.fr       */
+/*   Created: 2023/02/14 17:32:46 by orfreoua          #+#    #+#             */
+/*   Updated: 2023/02/14 20:52:45 by orfreoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HEADERS_H
-# define HEADERS_H
+#ifndef MINIMAP_H
+# define MINIMAP_H
 
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include "../mlx_linux/mlx.h"
-# include "libft.h"
-# include "colors.h"
-# include "key.h"
-# include "error_msg.h"
-# include "draw.h"
-# include "minimap.h"
-# include  <stdio.h>
+# define MMRATIO_X 1
+# define MMRATIO_Y 1
+# define MMOFFSET_X 0
+# define MMOFFSET_Y 0
+
+# include "headers.h"
+
+typedef struct s_minimap
+{
+	t_size  reso;
+    t_size  cell;
+    t_size  grid;
+    t_point pos_player;
+}	t_minimap;
 
 #endif

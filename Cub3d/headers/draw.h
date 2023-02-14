@@ -1,17 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   math.h                                             :+:      :+:    :+:   */
+/*   draw.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 20:20:31 by orfreoua          #+#    #+#             */
-/*   Updated: 2023/02/04 20:26:16 by orfreoua         ###   ########.fr       */
+/*   Updated: 2023/02/14 20:26:44 by orfreoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MATH_H
-# define MATH_H
+#ifndef DRAW_H
+# define DRAW_H
+
+# include "headers.h"
 
 typedef struct s_point
 {
@@ -21,8 +23,8 @@ typedef struct s_point
 
 typedef struct s_size
 {
-	int			x;
-	int			y;
+	double		width;
+	double		height;
 }	t_size;
 
 #endif
