@@ -6,7 +6,7 @@
 /*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 20:27:46 by orfreoua          #+#    #+#             */
-/*   Updated: 2023/02/14 18:49:52 by orfreoua         ###   ########.fr       */
+/*   Updated: 2023/02/16 17:42:54 by orfreoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@
 # include "draw.h"
 # include "minimap.h"
 # include  <stdio.h>
+# include <math.h>
 
 #endif

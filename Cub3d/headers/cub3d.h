@@ -6,7 +6,7 @@
 /*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:58:03 by orfreoua          #+#    #+#             */
-/*   Updated: 2023/02/14 20:25:58 by orfreoua         ###   ########.fr       */
+/*   Updated: 2023/02/16 20:14:28 by orfreoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ typedef struct s_file
 {
 	char		**map;
 	t_size		grid;
-	t_point		pos_player;	
+	t_point		pos_player;
+	double		rotate;
 	t_textures	textures;
 	t_color		ceiling;
 	t_color		floor;
@@ -55,11 +56,18 @@ typedef struct	s_mlx
 	t_screen	screen;
 }				t_mlx;
 
+typedef struct	s_raycating
+{
+	t_point		*rays;
+	double		*distances;
+}				t_raycasting;
+
 typedef struct s_data
 {
-	t_file		file;
-	t_minimap	minimap;
-	t_mlx		mlx;
+	t_file			file;
+	t_minimap		minimap;
+	t_mlx			mlx;
+	t_raycasting	rc;
 }	t_data;
 
 /*  utils.c */
@@ -74,5 +82,9 @@ void	draw_point(t_data *data, int x, int y , int color);
 
 void	display_minimap(t_data *data);
 void	mini_map_init(t_data *data, t_minimap *minimap);
+
+int	logic_raycasting(t_data *data);
+
+void	draw_line(t_data *data, t_point a1, t_point a2, int color);
 
 #endif
