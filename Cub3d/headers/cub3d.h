@@ -6,7 +6,7 @@
 /*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:58:03 by orfreoua          #+#    #+#             */
-/*   Updated: 2023/02/16 20:14:28 by orfreoua         ###   ########.fr       */
+/*   Updated: 2023/02/20 18:18:09 by orfreoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,7 @@ void	mini_map_init(t_data *data, t_minimap *minimap);
 int	logic_raycasting(t_data *data);
 
 void	draw_line(t_data *data, t_point a1, t_point a2, int color);
+
+void    print_data(t_data *data);
 
 #endif

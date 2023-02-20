@@ -6,7 +6,7 @@
 /*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 15:05:36 by orfreoua          #+#    #+#             */
-/*   Updated: 2023/02/08 20:04:08 by orfreoua         ###   ########.fr       */
+/*   Updated: 2023/02/20 18:34:41 by orfreoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	load_path(t_data *data, char *line, char **path, int fd)
 {
 	if (*path)
 	{
-		printf("%s\n", *path);
 		free(line);
 		close(fd);
 		free_error(data, DOUBLE_SAME_PATH);

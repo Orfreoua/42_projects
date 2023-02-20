@@ -6,7 +6,7 @@
 /*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:57:30 by orfreoua          #+#    #+#             */
-/*   Updated: 2023/02/16 21:40:21 by orfreoua         ###   ########.fr       */
+/*   Updated: 2023/02/20 18:11:14 by orfreoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,10 @@ void	init_pour_test(t_data *data)
 	data->file.grid.width = 4.0;
 	data->file.pos_player.x = 2;
 	data->file.pos_player.y = 2;
-	printf("cellx %f\n", data->minimap.cell.width);
-	printf("celly %f\n", data->minimap.cell.height);
 	data->minimap.pos_player.y = (data->file.pos_player.y * data->minimap.cell.height)
 		+ (data->minimap.cell.height / 2) + MMOFFSET_Y;
 	data->minimap.pos_player.x = (data->file.pos_player.x * data->minimap.cell.width)
 		+ (data->minimap.cell.width / 2) + MMOFFSET_X;
-	printf("la%f :\n", data->minimap.pos_player.y);
-	printf("la%f :\n", data->minimap.pos_player.x);
 }
 
 int	key_hook(int key, t_data *data)

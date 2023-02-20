@@ -6,7 +6,7 @@
 /*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 20:18:47 by orfreoua          #+#    #+#             */
-/*   Updated: 2023/02/08 18:32:52 by orfreoua         ###   ########.fr       */
+/*   Updated: 2023/02/20 18:16:26 by orfreoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define COLORS_H
 
 # define RED "\x1B[31m"
+# define BLU "\x1B[34m"
 # define NRM "\x1B[0m"
 
 typedef struct s_color

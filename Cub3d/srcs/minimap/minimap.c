@@ -6,7 +6,7 @@
 /*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 17:28:24 by orfreoua          #+#    #+#             */
-/*   Updated: 2023/02/16 21:58:37 by orfreoua         ###   ########.fr       */
+/*   Updated: 2023/02/20 19:18:16 by orfreoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,19 @@ void	draw_mmplayer(t_data *data)
 
 	x = data->minimap.pos_player.x;
 	y = data->minimap.pos_player.y;
-	printf("x : %f\n", x);
-	printf("y : %f\n", y);
 	draw_point(data, x, y, 0xBD131F);
+	draw_point(data, x + 1, y + 1, 0xBD131F);
+	draw_point(data, x - 1, y - 1, 0xBD131F);
+	draw_point(data, x - 1, y + 1, 0xBD131F);
+	draw_point(data, x + 1, y - 1, 0xBD131F);
 }
 
 void	display_mmrays(t_data *data)
 {
 	t_point p1;
 	
-	p1.x = data->file.pos_player.x + MMOFFSET_X;
-	p1.y = data->file.pos_player.y + MMOFFSET_Y;
+	p1.x = data->minimap.pos_player.x + MMOFFSET_X;
+	p1.y = data->minimap.pos_player.y + MMOFFSET_Y;
 
 	int cpt = 0;
 	int nb_rays = (int)RESO_X;
@@ -80,7 +82,6 @@ void	display_minimap(t_data *data)
 	while (data->file.map[y])
 	{
 		x = 0;
-		printf("%s\n", data->file.map[y]);
 		while (data->file.map[y][x])
 		{
 			if (data->file.map[y][x] == '1')

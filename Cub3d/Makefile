@@ -6,7 +6,7 @@
 #    By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/02 14:57:57 by orfreoua          #+#    #+#              #
-#    Updated: 2023/02/16 18:27:47 by orfreoua         ###   ########.fr        #
+#    Updated: 2023/02/20 18:18:46 by orfreoua         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRCS			=	srcs/*.c\
 					srcs/minimap/*.c\
 					srcs/draw/*.c\
 					srcs/raycasting/*.c\
+					srcs/hold/*.c\
 					
 
 DIR_MLX			=	./mlx_linux/
