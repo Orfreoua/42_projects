@@ -6,7 +6,7 @@
 /*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:57:30 by orfreoua          #+#    #+#             */
-/*   Updated: 2023/02/20 18:11:14 by orfreoua         ###   ########.fr       */
+/*   Updated: 2023/02/21 03:27:57 by orfreoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@ void	init_pour_test(t_data *data)
 		+ (data->minimap.cell.height / 2) + MMOFFSET_Y;
 	data->minimap.pos_player.x = (data->file.pos_player.x * data->minimap.cell.width)
 		+ (data->minimap.cell.width / 2) + MMOFFSET_X;
+	//pour test je lui donne orientation N
+	data->file.rotate = M_PI / 2;
+	//
 }
 
 int	key_hook(int key, t_data *data)
@@ -48,15 +51,26 @@ int	key_hook(int key, t_data *data)
 	(void)data;
 	if (key == ESCAPE)
 		end(data);
-	if (key == UP)
+	else if (key == R_RIGHT)
+			data->file.rotate += (1 / (2 * M_PI)) /2;
+	else if (key == R_LEFT)
+			data->file.rotate -= (1 / (2 * M_PI)) /2;
+	else if (key == UP)
 	{
-		if (logic_raycasting(data) == ERROR)
-			exit (1);
-		display_minimap(data);
+		if (!get_file_position(data, data->minimap.pos_player.x
+			+ cos(data->file.rotate), data->minimap.pos_player.y - sin(data->file.rotate)))
+		{
+			data->minimap.pos_player.x += cos(data->file.rotate);
+			data->minimap.pos_player.y -= sin(data->file.rotate);
+		}	
 	}
+	if (logic_raycasting(data) == ERROR)
+			exit (1);
+	display_minimap(data);
 	return (OK);
 }
 
+#include <string.h>
 int	main(int argc, char **argv)
 {
 	t_data	data;

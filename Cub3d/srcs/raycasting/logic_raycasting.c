@@ -6,7 +6,7 @@
 /*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 17:28:50 by orfreoua          #+#    #+#             */
-/*   Updated: 2023/02/20 19:11:34 by orfreoua         ###   ########.fr       */
+/*   Updated: 2023/02/21 02:40:00 by orfreoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,12 @@ double	get_distance(t_point p1, t_point p2)
 	return (sqrt(sqr(p2.y - p1.y) + sqr(p2.x - p1.x)));
 }
 
-int get_file_position(t_data *data, t_point p)
+int get_file_position(t_data * data, double x, double y)
 {
-	int x;
-	int	y;
-
-	x = (int)(p.x / data->minimap.cell.width);
-	y = (int)(p.y / data->minimap.cell.height);
-	if (data->file.map[y][x] && (data->file.map[y][x] == '0' ||  data->file.map[y][x] == 'N'))
+	int mx,my;
+	mx = (int)(x/data->minimap.cell.width);
+	my = (int)(y/data->minimap.cell.height);
+	if (data->file.map[my][mx] == '0' || data->file.map[my][mx] == 'N')
 		return 0;
 	return 1;
 }
@@ -51,12 +49,10 @@ int	load_distances(t_data *data, double first, double last, double slice)
 		{
 			data->rc.rays[cpt_ray].x = data->minimap.pos_player.x + (cos(first) * dist);
 			data->rc.rays[cpt_ray].y = data->minimap.pos_player.y - (sin(first) * dist);
-			if (get_file_position(data, data->rc.rays[cpt_ray]))
+			if (get_file_position(data, data->rc.rays[cpt_ray].x, data->rc.rays[cpt_ray].y))
 				break;
 			dist += 0.1;
 		}
-		//printf("%f, %f\n", data->minimap.pos_player.x, data->minimap.pos_player.y);
-		//printf("%f, %f\n", data->rc.rays[cpt_ray].x, data->rc.rays[cpt_ray].y);
 		data->rc.distances[cpt_ray] = get_distance(data->minimap.pos_player, data->rc.rays[cpt_ray]);
 		cpt_ray++;
 		first += slice;
@@ -66,9 +62,6 @@ int	load_distances(t_data *data, double first, double last, double slice)
 
 int	logic_raycasting(t_data *data)
 {
-	//pour test je lui donne orientation N
-	data->file.rotate = M_PI / 2;
-	//
 	double	first_degree;
 	double	last_degree;
 	double	slice;

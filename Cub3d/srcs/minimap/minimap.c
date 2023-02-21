@@ -6,7 +6,7 @@
 /*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 17:28:24 by orfreoua          #+#    #+#             */
-/*   Updated: 2023/02/20 19:18:16 by orfreoua         ###   ########.fr       */
+/*   Updated: 2023/02/21 03:30:26 by orfreoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	display_mmrays(t_data *data)
 	while (cpt < nb_rays)
 	{
 		//Draw ray
-		draw_line(data, p1, data->rc.rays[cpt], 555555);
+		draw_line(data, p1, data->rc.rays[cpt],  0xFFC0CB);
 		//draw_pointbypoint(data, data->rays[cpt], start_color);
 		cpt++;
 	}
@@ -85,9 +85,9 @@ void	display_minimap(t_data *data)
 		while (data->file.map[y][x])
 		{
 			if (data->file.map[y][x] == '1')
-				cell(data, x, y, 7777777); // random color
+				cell(data, x, y,   0x87CEEB); // random color
 			else if (data->file.map[y][x] == '0' || data->file.map[y][x] == 'N')
-				cell(data, x, y, 0xfffacd); // random color
+				cell(data, x, y, 0xE6E6FA); // random color
 			x++;
 		}
 		y++;
