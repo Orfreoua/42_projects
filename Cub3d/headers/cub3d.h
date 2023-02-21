@@ -6,7 +6,7 @@
 /*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:58:03 by orfreoua          #+#    #+#             */
-/*   Updated: 2023/02/21 02:32:58 by orfreoua         ###   ########.fr       */
+/*   Updated: 2023/02/21 05:41:14 by orfreoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,4 +89,7 @@ void	draw_line(t_data *data, t_point a1, t_point a2, int color);
 
 void    print_data(t_data *data);
 int		get_file_position(t_data * data, double x, double y);
+void	draw_background(t_data *data);
+void draw_circle(void *mlx_ptr, void *win_ptr, int x, int y, int radius, int color);
+void draw_full_circle(t_data *data, int x, int y, int radius, int color);
 #endif

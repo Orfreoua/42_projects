@@ -6,7 +6,7 @@
 /*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 17:28:50 by orfreoua          #+#    #+#             */
-/*   Updated: 2023/02/21 02:40:00 by orfreoua         ###   ########.fr       */
+/*   Updated: 2023/02/21 04:24:32 by orfreoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ double	get_distance(t_point p1, t_point p2)
 int get_file_position(t_data * data, double x, double y)
 {
 	int mx,my;
-	mx = (int)(x/data->minimap.cell.width);
-	my = (int)(y/data->minimap.cell.height);
+	mx = (int)((x - MMOFFSET_X) / data->minimap.cell.width);
+	my = (int)((y - MMOFFSET_Y) / data->minimap.cell.height);
 	if (data->file.map[my][mx] == '0' || data->file.map[my][mx] == 'N')
 		return 0;
 	return 1;

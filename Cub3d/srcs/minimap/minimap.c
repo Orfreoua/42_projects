@@ -6,7 +6,7 @@
 /*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 17:28:24 by orfreoua          #+#    #+#             */
-/*   Updated: 2023/02/21 03:30:26 by orfreoua         ###   ########.fr       */
+/*   Updated: 2023/02/21 05:46:49 by orfreoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,21 @@ void	draw_mmplayer(t_data *data)
 
 	x = data->minimap.pos_player.x;
 	y = data->minimap.pos_player.y;
+	draw_full_circle(data, x, y, 3, 0xFFA500);
+	/*
 	draw_point(data, x, y, 0xBD131F);
 	draw_point(data, x + 1, y + 1, 0xBD131F);
 	draw_point(data, x - 1, y - 1, 0xBD131F);
 	draw_point(data, x - 1, y + 1, 0xBD131F);
-	draw_point(data, x + 1, y - 1, 0xBD131F);
+	draw_point(data, x + 1, y - 1, 0xBD131F);*/
 }
 
 void	display_mmrays(t_data *data)
 {
 	t_point p1;
 	
-	p1.x = data->minimap.pos_player.x + MMOFFSET_X;
-	p1.y = data->minimap.pos_player.y + MMOFFSET_Y;
+	p1.x = data->minimap.pos_player.x;// + MMOFFSET_X;
+	p1.y = data->minimap.pos_player.y;// + MMOFFSET_Y;
 
 	int cpt = 0;
 	int nb_rays = (int)RESO_X;
@@ -39,7 +41,8 @@ void	display_mmrays(t_data *data)
 	while (cpt < nb_rays)
 	{
 		//Draw ray
-		draw_line(data, p1, data->rc.rays[cpt],  0xFFC0CB);
+		//draw_line(data, p1, data->rc.rays[cpt],  0xFFC0CB);
+		draw_line(data, p1, data->rc.rays[cpt],  0xF5DEB3);
 		//draw_pointbypoint(data, data->rays[cpt], start_color);
 		cpt++;
 	}

@@ -6,7 +6,7 @@
 /*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:57:30 by orfreoua          #+#    #+#             */
-/*   Updated: 2023/02/21 03:27:57 by orfreoua         ###   ########.fr       */
+/*   Updated: 2023/02/21 05:15:12 by orfreoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,15 +62,15 @@ int	key_hook(int key, t_data *data)
 		{
 			data->minimap.pos_player.x += cos(data->file.rotate);
 			data->minimap.pos_player.y -= sin(data->file.rotate);
-		}	
+		}
 	}
 	if (logic_raycasting(data) == ERROR)
 			exit (1);
+	draw_background(data);
 	display_minimap(data);
 	return (OK);
 }
 
-#include <string.h>
 int	main(int argc, char **argv)
 {
 	t_data	data;
