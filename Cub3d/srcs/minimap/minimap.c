@@ -6,7 +6,7 @@
 /*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 17:28:24 by orfreoua          #+#    #+#             */
-/*   Updated: 2023/02/21 05:46:49 by orfreoua         ###   ########.fr       */
+/*   Updated: 2023/02/23 22:17:55 by orfreoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,20 @@ void	display_mmrays(t_data *data)
 	}
 }
 
+void cell(t_data *data, int x, int y, unsigned int color)
+{
+    double cx = x * data->minimap.cell.width + data->minimap.cell.width / 2 + MMOFFSET_X;
+    double cy = y * data->minimap.cell.height + data->minimap.cell.height / 2 + MMOFFSET_Y;
+    double r = data->minimap.cell.width / 2 - 1;
+
+    for (int i = cx - r; i <= cx + r; i++)
+        for (int j = cy - r; j <= cy + r; j++)
+            if ((i - cx) * (i - cx) + (j - cy) * (j - cy) <= r * r)
+                draw_point(data, i, j, color);
+}
+
+
+/*
 void	cell(t_data *data, int x, int y, unsigned int color)
 {
 	double	a;
@@ -66,16 +80,16 @@ void	cell(t_data *data, int x, int y, unsigned int color)
 		{
 			if (a == (y * data->minimap.cell.height) + MMOFFSET_Y
 			|| b == (x * data->minimap.cell.width) + MMOFFSET_X
-			|| a == cpy_a - 1 || b == cpy_b - 1)
-				draw_point(data, b, a, 0);
+			|| a == cpy_a - 1 || b == cpy_b - 1){}
+				//draw_point(data, b, a, 0);
 			else
 				draw_point(data, b, a, color);
 			b++;
 		}
 		a++;
 	}
-}
-
+} 
+*/
 void	display_minimap(t_data *data)
 {
 	int x;
@@ -110,5 +124,8 @@ void	mini_map_init(t_data *data, t_minimap *minimap)
 		+ (minimap->cell.height / 2) + MMOFFSET_Y;
 	minimap->pos_player.x = (data->file.pos_player.x * minimap->cell.width)
 		+ (minimap->cell.width / 2) + MMOFFSET_X;
+	minimap->center.x = minimap->reso.width / 2;
+	minimap->center.y = minimap->reso.height / 2;
+	minimap->radius = 100;
 }
 

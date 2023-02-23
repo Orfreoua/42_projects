@@ -6,7 +6,7 @@
 /*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 17:28:50 by orfreoua          #+#    #+#             */
-/*   Updated: 2023/02/21 04:24:32 by orfreoua         ###   ########.fr       */
+/*   Updated: 2023/02/23 17:33:47 by orfreoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,6 @@ int	logic_raycasting(t_data *data)
 	slice = (last_degree - first_degree) / RESO_X;
 	if (load_distances(data, first_degree, last_degree, slice) == ERROR)
 		return (ERROR);
-	print_data(data);
+	//print_data(data);
 	return (OK);
 }

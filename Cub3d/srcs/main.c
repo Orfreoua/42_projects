@@ -6,7 +6,7 @@
 /*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:57:30 by orfreoua          #+#    #+#             */
-/*   Updated: 2023/02/21 05:15:12 by orfreoua         ###   ########.fr       */
+/*   Updated: 2023/02/23 17:47:40 by orfreoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,9 @@ int	key_hook(int key, t_data *data)
 	}
 	if (logic_raycasting(data) == ERROR)
 			exit (1);
+	
 	draw_background(data);
+	raycasting(data);
 	display_minimap(data);
 	return (OK);
 }
