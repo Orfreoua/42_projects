@@ -6,7 +6,7 @@
 #    By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/02 14:57:57 by orfreoua          #+#    #+#              #
-#    Updated: 2023/02/20 18:18:46 by orfreoua         ###   ########.fr        #
+#    Updated: 2023/02/24 16:24:25 by orfreoua         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ OBJS			= $(SRCS:.c=.o)
 
 CC				= cc
 
-CFLAGS			= -Wall -Wextra -Werror -I includes.
+CFLAGS			= -Wall -Wextra -Werror -I includes. -g
 
 LIBS			= -L ./mlx_linux/ -lmlx -lXext -lX11 -lm
 

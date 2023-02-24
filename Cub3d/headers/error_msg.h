@@ -6,7 +6,7 @@
 /*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 20:18:56 by orfreoua          #+#    #+#             */
-/*   Updated: 2023/02/08 19:22:02 by orfreoua         ###   ########.fr       */
+/*   Updated: 2023/02/24 23:41:27 by orfreoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # define SECRET_FILE "this is a secret file"
 # define BAD_NAME_FILE "this is a bad name of file"
 # define BAD_PATH_FILE "the path is not valid"
-# define MLX_CONNECTION "the connection between with the display has not been established"
+# define MLX_CONNECTION "the connection with the display has not established"
 # define WIN_CONNECTION "the window could not be created"
 # define MISSING_TEXTURES "one or more textures are missing from the file.cub"
 # define DOUBLE_SAME_PATH "tu as mis deux fois le meme path spice di connasse"

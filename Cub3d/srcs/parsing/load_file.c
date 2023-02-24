@@ -6,7 +6,7 @@
 /*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 15:05:36 by orfreoua          #+#    #+#             */
-/*   Updated: 2023/02/20 18:34:41 by orfreoua         ###   ########.fr       */
+/*   Updated: 2023/02/24 23:11:49 by orfreoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,21 +40,6 @@ void	load_path(t_data *data, char *line, char **path, int fd)
 		close(fd);
 		free_error(data, DOUBLE_SAME_PATH);
 	}
-	/*if (data->file.textures[index])
-	{
-		printf("%s\n", data->file.textures[index]);
-		free(line);
-		close(fd);
-		free_error(data, DOUBLE_SAME_PATH);
-	}
-	data->file.textures[index] = ft_strdup(line);
-	if (!data->file.textures[index])
-	{
-		free(line);
-		close(fd);
-		free_error(data, MALLOC_FAILED);
-	}
-	printf("%s\n", data->file.textures[index]);*/
 }
 
 int	check_inside_file(t_data *data, int fd)
@@ -75,15 +60,12 @@ int	check_inside_file(t_data *data, int fd)
 			load_path(data, line, &data->file.textures.east, fd);
 		else if (ft_strncmp(line, "WE ", 3))
 			load_path(data, line, &data->file.textures.west, fd);
-	/*	else if (ft_strncmp(line, "F ", 2)){}
-		//else if (ft_strncmp(line, "C ", 2)){}*/
 		else
-			break;
+			break ;
 		nb++;
 		if (all_data_is_recovered(data))
 			break ;
 	}
-	//		return (print_error(MISSING_TEXTURES));*/
 	return (OK);
 }	
 

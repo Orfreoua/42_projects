@@ -6,7 +6,7 @@
 /*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 18:13:16 by orfreoua          #+#    #+#             */
-/*   Updated: 2023/02/08 19:50:44 by orfreoua         ###   ########.fr       */
+/*   Updated: 2023/02/24 23:12:05 by orfreoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	init_file(t_file *file)
 	file->pos_player.x = -1;
 	file->pos_player.y = -1;
 }
-
 
 int	valid_color(t_color *color)
 {

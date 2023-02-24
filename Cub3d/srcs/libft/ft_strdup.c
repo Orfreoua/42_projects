@@ -6,7 +6,7 @@
 /*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 17:13:09 by orfreoua          #+#    #+#             */
-/*   Updated: 2023/02/04 17:13:23 by orfreoua         ###   ########.fr       */
+/*   Updated: 2023/02/24 22:48:17 by orfreoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ char	*ft_strdup(const char *s)
 	len = 0;
 	while (s[len])
 		len++;
-	if (!(dest = malloc(sizeof(char) * (len + 1))))
+	dest = malloc(sizeof(char) * (len + 1));
+	if (!dest)
 		return (0);
 	i = 0;
 	while (i < len)

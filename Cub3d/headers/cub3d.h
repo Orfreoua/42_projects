@@ -6,7 +6,7 @@
 /*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:58:03 by orfreoua          #+#    #+#             */
-/*   Updated: 2023/02/23 17:47:06 by orfreoua         ###   ########.fr       */
+/*   Updated: 2023/02/24 23:37:47 by orfreoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct s_file
 	t_color		floor;
 }	t_file;
 
-typedef struct	s_screen
+typedef struct s_screen
 {
 	void	*ptr;
 	char	*addr;
@@ -49,17 +49,18 @@ typedef struct	s_screen
 	int		endian;
 }				t_screen;
 
-typedef struct	s_mlx
+typedef struct s_mlx
 {
 	void		*ptr;
 	void		*ptr_win;
 	t_screen	screen;
 }				t_mlx;
 
-typedef struct	s_raycating
+typedef struct s_raycating
 {
 	t_point		*rays;
 	double		*distances;
+	double		distance_plane;
 }				t_raycasting;
 
 typedef struct s_data
@@ -78,19 +79,14 @@ void	free_error(t_data *data, char *msg);
 int		load_file(t_data *data, char *file);
 int		all_data_is_recovered(t_data *data);
 void	init_file(t_file *file);
-void	draw_point(t_data *data, int x, int y , int color);
-
+void	draw_point(t_data *data, int x, int y, int color);
 void	display_minimap(t_data *data);
 void	mini_map_init(t_data *data, t_minimap *minimap);
-
-int	logic_raycasting(t_data *data);
-
+int		logic_raycasting(t_data *data);
 void	draw_line(t_data *data, t_point a1, t_point a2, int color);
-
-void    print_data(t_data *data);
-int		get_file_position(t_data * data, double x, double y);
+void	print_data(t_data *data);
+int		get_file_position(t_data *data, double x, double y);
 void	draw_background(t_data *data);
-void draw_circle(void *mlx_ptr, void *win_ptr, int x, int y, int radius, int color);
-void draw_full_circle(t_data *data, int x, int y, int radius, int color);
+void	draw_full_circle(t_data *data, int x, int y, int radius);
 void	raycasting(t_data *data);
 #endif

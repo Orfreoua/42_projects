@@ -6,7 +6,7 @@
 /*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 17:28:50 by orfreoua          #+#    #+#             */
-/*   Updated: 2023/02/23 17:33:47 by orfreoua         ###   ########.fr       */
+/*   Updated: 2023/02/24 23:54:27 by orfreoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,22 @@ double	get_distance(t_point p1, t_point p2)
 	return (sqrt(sqr(p2.y - p1.y) + sqr(p2.x - p1.x)));
 }
 
-int get_file_position(t_data * data, double x, double y)
+int	get_file_position(t_data *data, double x, double y)
 {
-	int mx,my;
-	mx = (int)((x - MMOFFSET_X) / data->minimap.cell.width);
-	my = (int)((y - MMOFFSET_Y) / data->minimap.cell.height);
+	int	mx;
+	int	my;
+
+	mx = (int)((x - data->minimap.mmoffset.width) / data->minimap.cell.width);
+	my = (int)((y - data->minimap.mmoffset.height) / data->minimap.cell.height);
 	if (data->file.map[my][mx] == '0' || data->file.map[my][mx] == 'N')
-		return 0;
-	return 1;
+		return (0);
+	return (1);
 }
 
 int	load_distances(t_data *data, double first, double last, double slice)
 {
 	double	dist;
-	int cpt_ray;
+	int		cpt_ray;
 
 	data->rc.rays = malloc(sizeof(t_point) * (int)RESO_X);
 	data->rc.distances = malloc(sizeof(double) * (int)RESO_X);
@@ -47,13 +49,17 @@ int	load_distances(t_data *data, double first, double last, double slice)
 		dist = 0;
 		while (1)
 		{
-			data->rc.rays[cpt_ray].x = data->minimap.pos_player.x + (cos(first) * dist);
-			data->rc.rays[cpt_ray].y = data->minimap.pos_player.y - (sin(first) * dist);
-			if (get_file_position(data, data->rc.rays[cpt_ray].x, data->rc.rays[cpt_ray].y))
-				break;
+			data->rc.rays[cpt_ray].x = data->minimap.pos_player.x
+				+ (cos(first) * dist);
+			data->rc.rays[cpt_ray].y = data->minimap.pos_player.y
+				- (sin(first) * dist);
+			if (get_file_position(data, data->rc.rays[cpt_ray].x,
+					data->rc.rays[cpt_ray].y))
+				break ;
 			dist += 0.1;
 		}
-		data->rc.distances[cpt_ray] = get_distance(data->minimap.pos_player, data->rc.rays[cpt_ray]);
+		data->rc.distances[cpt_ray] = get_distance(data->minimap.pos_player,
+				data->rc.rays[cpt_ray]);
 		cpt_ray++;
 		first += slice;
 	}
@@ -71,6 +77,5 @@ int	logic_raycasting(t_data *data)
 	slice = (last_degree - first_degree) / RESO_X;
 	if (load_distances(data, first_degree, last_degree, slice) == ERROR)
 		return (ERROR);
-	//print_data(data);
 	return (OK);
 }

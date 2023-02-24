@@ -6,22 +6,21 @@
 /*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 17:32:46 by orfreoua          #+#    #+#             */
-/*   Updated: 2023/02/23 21:26:47 by orfreoua         ###   ########.fr       */
+/*   Updated: 2023/02/24 23:49:07 by orfreoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIMAP_H
 # define MINIMAP_H
 
-# define MMRATIO_X 0.8
-# define MMRATIO_Y 0.8
-# define MMOFFSET_X 0
-# define MMOFFSET_Y 0
+# define MMRATIO_X 0.2
+# define MMRATIO_Y 0.2
 
 # include "headers.h"
 
 typedef struct s_minimap
 {
+	t_size	mmoffset;
 	t_size	reso;
 	t_size	cell;
 	t_size	grid;
