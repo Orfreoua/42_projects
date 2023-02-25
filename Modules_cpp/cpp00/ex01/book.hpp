@@ -9,7 +9,7 @@
 class   Book
 {
 	private:
-	
+
 	int 	_nb_cont;
 	int 	_index_cont;
 	Contact _all[8];

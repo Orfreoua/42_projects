@@ -37,7 +37,7 @@ void    Book::waiting_cmd(void){
 		else if (buff == "EXIT")
 		{
 			std::cout << "\x1b[2J" << "\x1b[H";
-			break ;
+			return ;
 		}
 	}
 }
@@ -64,7 +64,7 @@ void	Book::table_waiting_cmd(Contact all[8], int nb_cont){
 			if (index - 1 >= 0 &&  index - 1 < nb_cont)
 				display_full_contact(all, index - 1, nb_cont);
 		}
-		waiting_cmd();
+		break ;
 	}
 }
 
@@ -80,9 +80,7 @@ void Book::print_table(Contact all[8], int nb_cont)
 	std::cout << "🔎 Please enter the index you are looking for: \n";
 	print_header();
 	for (int i = 0; (i < nb_cont); i++){
-		std::cout << "|";
-		std::cout << "         ";
-		std::cout << (i + 1) << '|';
+		std::cout << "|         " << (i + 1) << "|";
 		print_contact(all[i].getFirstName(), false);
 		print_contact(all[i].getLastName(), false);
 		print_contact(all[i].getNickName(), true);
@@ -112,8 +110,8 @@ int		Book::bigger_line(Contact all[8], int index_cont)
 
 void    Book::display_full_contact(Contact all[8], int index_cont, int nb_cont){
 	std::string	buff;
-	int			index;
 	int			size = bigger_line(all, index_cont) + 18;
+	int			index;
 
 	std::cout << "\x1b[2J" << "\x1b[H"; // "clear" -> "retour en haut de page".
 	print_sep_full_cont(size, 0);
@@ -146,6 +144,5 @@ void    Book::display_full_contact(Contact all[8], int index_cont, int nb_cont){
 	index = my_atoi(buff);
 	if (index - 1 >= 0 &&  index - 1 < nb_cont)
 		display_full_contact(all, index - 1, nb_cont);
-	waiting_cmd();
 }
 

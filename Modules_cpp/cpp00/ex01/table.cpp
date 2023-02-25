@@ -1,5 +1,4 @@
 #include "table.hpp"
-#include "utils.hpp"
 
 void	print_separator()
 {
@@ -10,28 +9,29 @@ void	print_separator()
 void	print_header()
 {
 	print_separator();
-	std::cout << "|Index     |First name|Last Name |Nickname  |";
+	std::cout << "|     Index|First name| Last Name|  Nickname|";
 	std::cout << std::endl;
 	print_separator();
 }
 
 void	print_contact(std::string buff, bool end){
-	int	len = my_strlen(buff);
-	int i = 0;
+	int	size = buff.size();
 
-	
-	while (len++ < 10)
-		std::cout << ' ';
-
-	while (buff[i]){
-		std::cout << buff[i];
-		i++;
-		if (i == 9 && buff[10]){
-			std::cout << "*";
-			i = 10;
-			break ;
-		}
+	while (size < 10)
+	{
+		std::cout << " ";
+		size++;
 	}
+	size = 0;
+	while (buff[size] && size < 9)
+	{
+		std::cout << buff[size];
+		size++;
+	}
+	if (buff.size() == 10)
+		std::cout << buff[9];
+	else if (buff.size() > 10)
+		std::cout << "*";
 	std::cout << "|";
 	if (end)
 	{

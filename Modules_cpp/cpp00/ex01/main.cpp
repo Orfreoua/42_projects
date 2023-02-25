@@ -2,8 +2,8 @@
 
 int main(void)
 {
-    Book instance;
+	Book instance;
 
-    instance.waiting_cmd();
-    return (0);
+	instance.waiting_cmd();
+	return (0);
 }
