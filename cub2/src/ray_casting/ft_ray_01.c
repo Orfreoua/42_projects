@@ -1,14 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_ray_01.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: orfreoua <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/19 17:23:24 by orfreoua          #+#    #+#             */
+/*   Updated: 2023/08/19 17:23:26 by orfreoua         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #include "../../cub3D.h"
 
-void	ft_init_ray(t_mlx *mlx)
+void	ft_init_ray(t_data *data)
 {
-	mlx->player.hit1_x = mlx->player.x;
-	mlx->player.hit1_y = mlx->player.y;
-	mlx->player.hit2_x = mlx->player.x;
-	mlx->player.hit2_y = mlx->player.y;
-	mlx->player.f_hit_x = mlx->player.x;
-	mlx->player.f_hit_y = mlx->player.y;
+	data->player.hit1_x = data->player.x;
+	data->player.hit1_y = data->player.y;
+	data->player.hit2_x = data->player.x;
+	data->player.hit2_y = data->player.y;
+	data->player.f_hit_x = data->player.x;
+	data->player.f_hit_y = data->player.y;
 }
 
 double	ft_move_angle(double angle, double move)
@@ -42,41 +54,41 @@ int	ft_angle(double angle)
 	return (-1);
 }
 
-double	ft_ray_caster(t_mlx *mlx, double x, double y, double angle)
+double	ft_ray_caster(t_data *data, double x, double y, double angle)
 {
 	int		direction;
 	double	hypo;
 
 	direction = ft_angle(angle / (PI / 180));
-	ft_init_ray(mlx);
+	ft_init_ray(data);
 	if (direction == 1)
-		hypo = ft_east(mlx);
+		hypo = ft_east(data);
 	else if (direction == 2)
-		hypo = ft_south(mlx);
+		hypo = ft_south(data);
 	else if (direction == 3)
-		hypo = ft_west(mlx);
+		hypo = ft_west(data);
 	else if (direction == 4)
-		hypo = ft_north(mlx);
+		hypo = ft_north(data);
 	else if (direction == 5)
-		hypo = ft_se(mlx, x, y, angle);
+		hypo = ft_se(data, x, y, angle);
 	else if (direction == 6)
-		hypo = ft_sw(mlx, x, y, angle);
+		hypo = ft_sw(data, x, y, angle);
 	else if (direction == 7)
-		hypo = ft_nw(mlx, x, y, angle);
+		hypo = ft_nw(data, x, y, angle);
 	else if (direction == 8)
-		hypo = ft_ne(mlx, x, y, angle);
+		hypo = ft_ne(data, x, y, angle);
 	return (hypo);
 }
 
-char	ft_check_hit(t_mlx *mlx, char hit, double x, double y)
+char	ft_check_hit(t_data *data, char hit, double x, double y)
 {
 	if (hit == 'e')
-		return (mlx->map.grid[(unsigned int)y][(unsigned int)x]);
+		return (data->map.grid[(unsigned int)y][(unsigned int)x]);
 	else if (hit == 's')
-		return (mlx->map.grid[(unsigned int)y][(unsigned int)x]);
+		return (data->map.grid[(unsigned int)y][(unsigned int)x]);
 	else if (hit == 'w')
-		return (mlx->map.grid[(unsigned int)y][(unsigned int)(x - 1)]);
+		return (data->map.grid[(unsigned int)y][(unsigned int)(x - 1)]);
 	else if (hit == 'n')
-		return (mlx->map.grid[(unsigned int)(y - 1)][(unsigned int)x]);
+		return (data->map.grid[(unsigned int)(y - 1)][(unsigned int)x]);
 	return ('1');
 }

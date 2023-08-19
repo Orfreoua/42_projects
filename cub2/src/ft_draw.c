@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_draw.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: orfreoua <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/19 17:22:06 by orfreoua          #+#    #+#             */
+/*   Updated: 2023/08/19 17:22:09 by orfreoua         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #include "../cub3D.h"
 
@@ -36,17 +48,17 @@ void	ft_draw_col_f(t_img *buff, int x, int len, int color)
 	}
 }
 
-void	ft_draw_t_col(t_mlx *mlx, t_img *buff, int x, int y)
+void	ft_draw_t_col(t_data *data, t_img *buff, int x, int y)
 {
 	int				i;
 	t_text			*texture;
 	unsigned int	color;
 
 	i = 0;
-	texture = ft_choose_text(mlx);
-	while (i < mlx->ray.f_wall_height)
+	texture = ft_choose_text(data);
+	while (i < data->ray.f_wall_height)
 	{
-		color = ft_get_pixel(mlx, texture, i, mlx->ray.f_wall_height);
+		color = ft_get_pixel(data, texture, i, data->ray.f_wall_height);
 		my_pixel_put(buff, x, y + i, color);
 		i++;
 	}

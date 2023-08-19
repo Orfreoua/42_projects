@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/08/19 17:21:55 by orfreoua          #+#    #+#              #
+#    Updated: 2023/08/19 18:41:58 by orfreoua         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 
 SRCS		=	src/main.c			\
 			src/ft_draw.c			\
@@ -21,6 +33,7 @@ SRCS		=	src/main.c			\
 			src/ray_casting/ft_texture.c	\
 			src/memory/ft_memory.c		\
 			src/memory/ft_error.c		\
+			src/menu.c
 			
 DIR_MLX		=	./mlx_linux/
 
@@ -49,4 +62,5 @@ fclean:			clean
 
 re: clean all
 
-.PHONY:		all clean fclean re
+
+.PHONY:		all clean fclean re 

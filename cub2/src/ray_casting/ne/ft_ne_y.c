@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_ne_y.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: orfreoua <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/19 17:24:25 by orfreoua          #+#    #+#             */
+/*   Updated: 2023/08/19 17:24:26 by orfreoua         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #include "../../../cub3D.h"
 
-double	*ft_ne_y(t_mlx *mlx, double x, double y, double angle)
+double	*ft_ne_y(t_data *data, double x, double y, double angle)
 {
 	int		i;
 	double	*hypo;
@@ -11,38 +23,38 @@ double	*ft_ne_y(t_mlx *mlx, double x, double y, double angle)
 	if (hypo == NULL)
 		return (NULL);
 	hypo[0] = y / cos((PI / 2) - ((2 * PI) - angle));
-	mlx->player.hit1_x = mlx->player.x + sqrt(hypo[0] * hypo[0] - (y * y));
-	mlx->player.hit1_y = (int)mlx->player.y;
-	while (mlx->player.hit1_y >= 0 && mlx->player.hit1_x <= mlx->map.g_width
-		&& ft_check_hit(mlx, 'n', mlx->player.hit1_x,
-			mlx->player.hit1_y) != '1')
+	data->player.hit1_x = data->player.x + sqrt(hypo[0] * hypo[0] - (y * y));
+	data->player.hit1_y = (int)data->player.y;
+	while (data->player.hit1_y >= 0 && data->player.hit1_x <= data->map.g_width
+		&& ft_check_hit(data, 'n', data->player.hit1_x,
+			data->player.hit1_y) != '1')
 	{
 		hypo[0] = (y + i) / cos((PI / 2) - ((2 * PI) - angle));
-		mlx->player.hit1_x = (int)mlx->player.x + x + sqrt(
+		data->player.hit1_x = (int)data->player.x + x + sqrt(
 				hypo[0] * hypo[0] - ((y + i) * (y + i)));
-		mlx->player.hit1_y = (int)mlx->player.y - i;
+		data->player.hit1_y = (int)data->player.y - i;
 		i++;
 	}
-	hypo[1] = ft_ne_y_1(mlx, x, y, angle);
+	hypo[1] = ft_ne_y_1(data, x, y, angle);
 	return (hypo);
 }
 
-double	ft_ne_y_1(t_mlx *mlx, double x, double y, double angle)
+double	ft_ne_y_1(t_data *data, double x, double y, double angle)
 {
 	int		i;
 	double	hypo;
 
 	i = 1;
 	hypo = (1 - x) / cos((2 * PI) - angle);
-	mlx->player.hit2_x = (int)mlx->player.x + 1;
-	mlx->player.hit2_y = mlx->player.y - sqrt(hypo * hypo - (1 - x) * (1 - x));
-	while (mlx->player.hit2_y >= 0 && mlx->player.hit2_x <= mlx->map.g_width
-		&& ft_check_hit(mlx, 'e', mlx->player.hit2_x,
-			mlx->player.hit2_y) != '1')
+	data->player.hit2_x = (int)data->player.x + 1;
+	data->player.hit2_y = data->player.y - sqrt(hypo * hypo - (1 - x) * (1 - x));
+	while (data->player.hit2_y >= 0 && data->player.hit2_x <= data->map.g_width
+		&& ft_check_hit(data, 'e', data->player.hit2_x,
+			data->player.hit2_y) != '1')
 	{
 		hypo = ((1 - x) + i) / cos((2 * PI) - angle);
-		mlx->player.hit2_x = (int)mlx->player.x + 1 + i;
-		mlx->player.hit2_y = (int)mlx->player.y + y - sqrt(
+		data->player.hit2_x = (int)data->player.x + 1 + i;
+		data->player.hit2_y = (int)data->player.y + y - sqrt(
 				hypo * hypo - (((1 - x) + i) * ((1 - x) + i)));
 		i++;
 	}
