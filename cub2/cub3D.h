@@ -6,7 +6,7 @@
 /*   By: orfreoua <ofreoua42student@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 17:21:44 by orfreoua          #+#    #+#             */
-/*   Updated: 2023/08/19 19:19:35 by orfreoua         ###   ########.fr       */
+/*   Updated: 2023/08/20 17:34:25 by orfreoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@
 #define ENTER 65293
 
 
-
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -40,9 +39,17 @@
 # include "mlx_linux/mlx.h"
 # include <string.h>
 # define PI 3.1415926535
-# define S_WIDTH 500
-# define S_HEIGHT 500
+# define R_WIDTH 500
+# define R_HEIGHT 500
 # define B_SIZE 100
+
+#define BONUS 1
+
+typedef struct s_point
+{
+	double	x;
+	double	y;
+}			t_point;
 
 typedef struct s_ray
 {
@@ -111,6 +118,15 @@ typedef struct s_menu
 	int		index;
 }			t_menu;
 
+typedef struct s_minimap
+{
+	t_point	ratio;
+	t_point	offset;
+	t_point	reso;
+	t_point	cell;
+	t_point	pos;
+}			t_minimap;
+
 typedef struct s_data
 {
 	void		*mlx;
@@ -127,6 +143,7 @@ typedef struct s_data
 	t_arg		arg;
 	int			frame;
 	t_menu		menu;
+	t_minimap	minimap;
 }				t_data;
 
 
@@ -192,5 +209,6 @@ void			execute_menu(t_data *data);
 void			menu_dir(t_data *data, int key);
 void			display_menu(t_data *data);
 void			menu(t_data *data, int keycode);
+void 			draw_minimap(t_data *data);
 
 #endif
